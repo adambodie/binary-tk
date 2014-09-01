@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 use Tkx;
-#notebook.plx
+#binary.plx
 
 #Declare variables
 my $bin;
@@ -147,22 +147,22 @@ sub basicanswer {
 my $title3 = $page3->new_ttk__label( -text => "How to add in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 20);
 
 #Text
-my $text = $page3->new_tk__text(-width => 35, -height => 5, -wrap => "word");
-$text->insert("1.0", "Let's start with me. When adding two of me, I know I need to grow, but I'm afraid to do so.  So I will remain Zero.  Now One will tell his story.");
-$text->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "nwes");
+my $text = $page3->new_ttk__label(-text=> "Let's start with me. When adding \ntwo of me, I know I need to grow, \nbut I'm afraid to do so.  So I \nwill remain Zero.  Now One will \ntell his story.");
+$text->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
 
-my $text1 = $page3->new_tk__text(-width => 35, -height => 15, -wrap => "word");
-$text1->insert("1.0", "Now it's my turn.  When adding two of me, I know I need to grow, but I'm the biggest digit around, so I have to get creative.  
+my $text1 = $page3->new_ttk__label(-text => "Now it's my turn.  When adding two of me, I know I need to grow, but \nI'm the biggest digit around, so I have to get creative.  
 
-I can't stay a One, so I become Zero.  But the other One gets carried over next to Zero and we become best friends.  
-Therefore, One plus One in binary equals 10, which for you decimal folks, is equal to 2. 
+I can't stay a One, so I become Zero.  But the other One gets carried over \nnext to Zero and we become best friends.  Therefore, One plus One \nin binary equals 10, which for you decimal folks, is equal to 2. 
 
 Now lets talk about adding One and Zero together.");
 $text1->g_grid( -column=> 1, -row => 2, -padx => 20, -pady=> 20, -sticky => "nwes");
 
-my $text2 = $page3->new_tk__text(-width => 70, -height => 5, -wrap => "word");
-$text2->insert("1.0", "So, when adding One and Zero, Zero refuses to change and One is waiting to grow, so therefore, we'll remain as One. Adding our paired friends Ten to One, we see that One is more willing to be with the other One than it's original friend Zero, there, Ten plus One in binary equals 11, which for you decimal folks, is equal to 3.");
-$text2->g_grid( -column=> 0, -row => 3, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nwes");
+my $text2 = $page3->new_ttk__label(-text => "So, when adding One and Zero, Zero refuses to change and One is waiting \nto grow, so therefore, we'll remain as One. Adding our paired friends Ten to \nOne, we see that One is more willing to be with the other One than its \noriginal friend Zero, there, Ten plus One in binary equals 11, which for \nyou decimal folks, is equal to 3.");
+$text2->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nwes");
+
+my $zero2 = $page3->new_ttk__label(-image => "zeroimg")->g_grid(-column => 0, -row => 3, -sticky => "s");
+my $one2 = $page3->new_ttk__label(-image => "oneimg")->g_grid(-column => 1, -row => 3, -sticky => "s");
+
 #Tab4 - Adding Exercise
 #Title
 my $try = $page4->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
@@ -177,7 +177,7 @@ $answerbutton->g_grid(-column => 0, -row => 3, -sticky => "w", -padx => 100, -pa
 sub answer { $bin = 10001 }
 
 #Answer
-my $field = $page4->new_ttk__entry(-width => 10, -textvariable => \$bin);
+my $field = $page4->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $field->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
 #Canvas Title
@@ -185,7 +185,7 @@ my $pad = $page4->new_ttk__label (-text => "Use the sketchpad below to assist yo
 
 #Canvas
 my $canvas = $page4->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
-$canvas->g_grid(-column=> 0, -row=> 5, -columnspan => 3);
+$canvas->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
 $canvas->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas->canvasx($x); $lasty=$canvas->canvasy($y)}, Tkx::Ev("%x","%y")]);
 $canvas->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas->canvasx($x),$canvas->canvasy($y))}, Tkx::Ev("%x","%y")]);
 $canvas->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
