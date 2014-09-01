@@ -144,7 +144,7 @@ sub basicanswer {
 
 #Tab3
 #Title
-my $title3 = $page3->new_ttk__label( -text => "How to add in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 20);
+my $title3 = $page3->new_ttk__label( -text => "How to add in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
 #Text
 my $text = $page3->new_ttk__label(-text=> "Let's start with me. When adding \ntwo of me, I know I need to grow, \nbut I'm afraid to do so.  So I \nwill remain Zero.  Now One will \ntell his story.");
@@ -155,13 +155,17 @@ my $text1 = $page3->new_ttk__label(-text => "Now it's my turn.  When adding two 
 I can't stay a One, so I become Zero.  But the other One gets carried over \nnext to Zero and we become best friends.  Therefore, One plus One \nin binary equals 10, which for you decimal folks, is equal to 2. 
 
 Now lets talk about adding One and Zero together.");
-$text1->g_grid( -column=> 1, -row => 2, -padx => 20, -pady=> 20, -sticky => "nwes");
+$text1->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
 
 my $text2 = $page3->new_ttk__label(-text => "So, when adding One and Zero, Zero refuses to change and One is waiting \nto grow, so therefore, we'll remain as One. Adding our paired friends Ten to \nOne, we see that One is more willing to be with the other One than its \noriginal friend Zero, there, Ten plus One in binary equals 11, which for \nyou decimal folks, is equal to 3.");
-$text2->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nwes");
+$text2->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
-my $zero2 = $page3->new_ttk__label(-image => "zeroimg")->g_grid(-column => 0, -row => 3, -sticky => "s");
-my $one2 = $page3->new_ttk__label(-image => "oneimg")->g_grid(-column => 1, -row => 3, -sticky => "s");
+Tkx::image_create_photo("zero3img", -file => "zero3.gif");
+my $zero2 = $page3->new_ttk__label(-image => "zero3img")->g_grid(-column => 0, -row => 3, -sticky => "n");
+Tkx::image_create_photo("one3img", -file => "one3.gif");
+my $one2 = $page3->new_ttk__label(-image => "one3img")->g_grid(-column => 1, -row => 2, -sticky => "n");
+Tkx::image_create_photo("tenimg", -file => "ten.gif");
+my $ten = $page3->new_ttk__label(-image => "tenimg")->g_grid(-column => 1, -row => 4, -sticky => "ne");
 
 #Tab4 - Adding Exercise
 #Title
@@ -179,6 +183,13 @@ sub answer { $bin = 10001 }
 #Answer
 my $field = $page4->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $field->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
+
+Tkx::image_create_photo("zero2img", -file => "zero2.gif");
+my $zero3 = $page4->new_ttk__label(-image=> "zero2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
+Tkx::image_create_photo("one2img", -file => "one2.gif");
+my $one3 = $page4->new_ttk__label(-image => "one2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
+
+
 
 #Canvas Title
 my $pad = $page4->new_ttk__label (-text => "Use the sketchpad below to assist you if you need it!")->g_grid(-column => 0, -row => 4, -columnspan => 2, -pady=> 10, -padx => 40);
