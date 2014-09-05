@@ -21,7 +21,7 @@ $wid->g_wm_title("Counting Binary");
 $wid->g_grid_columnconfigure(0, -weight => 1);
 $wid->g_grid_rowconfigure(0, -weight => 1);
 my $top = $wid->new_ttk__label(-text=> "Learning the Basics of Binary", -font => "TitleFont");
-$top->g_grid(-column=>0, -row=> 0, -pady => 20);
+$top->g_grid(-column=>0, -row=> 0, -pady => 15);
 
 #Create Notebook and Tabs
 my $note = $wid->new_ttk__notebook;
@@ -48,15 +48,34 @@ $note->add($page9, -text => "Dividing");
 $note->add($page10, -text => "Dividing exercise");
 $note->g_grid(-column => 0, -row => 1, -sticky => "nwes");
 
-#Tab1
+#Create Images
+Tkx::image_create_photo("zero1img", -file => "zero1.gif");
+Tkx::image_create_photo("one1img", -file => "one1.gif");
+Tkx::image_create_photo("zero2aimg", -file => "zero2a.gif");
+Tkx::image_create_photo("zero2bimg", -file => "zero2b.gif");         
+Tkx::image_create_photo("one2aimg", -file => "one2a.gif");
+Tkx::image_create_photo("one2bimg", -file => "one2b.gif");
+Tkx::image_create_photo("zero3img", -file => "zero3.gif");
+Tkx::image_create_photo("one3img", -file => "one3.gif");
+Tkx::image_create_photo("tenimg", -file => "ten.gif");
+Tkx::image_create_photo("zero4img", -file => "zero4.gif");
+Tkx::image_create_photo("one4img", -file => "one4.gif");
+Tkx::image_create_photo("zero5img", -file => "zero5.gif");
+Tkx::image_create_photo("one5img", -file => "one5.gif");
+Tkx::image_create_photo("zero6img", -file => "zero6.gif");
+Tkx::image_create_photo("one6img", -file => "one6.gif");
+Tkx::image_create_photo("zero7img", -file => "zero7.gif");
+Tkx::image_create_photo("one7img", -file => "one7.gif");
+Tkx::image_create_photo("zero8img", -file => "zero8.gif");
+Tkx::image_create_photo("one8img", -file => "one8.gif");
+Tkx::image_create_photo("zero9img", -file => "zero9.gif");
+Tkx::image_create_photo("one9img", -file => "one9.gif");
+Tkx::image_create_photo("zero10img", -file => "zero10.gif");
+Tkx::image_create_photo("one10img", -file => "one10.gif");
+
+#####Tab1#####
 #Title
 my $title1 = $page1->new_ttk__label( -text => "Basic Binary Values", -font => "TitleFont")->g_grid(-column => 1, -row => 0, -columnspan => 4, -pady => 20);
-
-#Zero and One
-Tkx::image_create_photo("zeroimg", -file => "zero.gif");
-my $zero = $page1->new_ttk__label(-image=> "zeroimg")->g_grid(-column => 0, -row => 3, -rowspan => 3);
-Tkx::image_create_photo("oneimg", -file => "one.gif");
-my $one = $page1->new_ttk__label(-image => "oneimg")->g_grid(-column => 5, -row => 3, -rowspan => 3);
 
 #Buttons
 my $b0 = $page1->new_ttk__button(-width => 5, -text => 0, -command => sub {b0()});
@@ -92,6 +111,11 @@ $b14->g_grid(-column => 3, -row => 5);
 my $b15 = $page1->new_ttk__button(-width => 5, -text => 15, -command => sub {b15()});
 $b15->g_grid(-column => 4, -row => 5);
 
+#Image
+my $zero1 = $page1->new_ttk__label(-image=> "zero1img")->g_grid(-column => 0, -row => 3, -rowspan => 3);
+my $one1 = $page1->new_ttk__label(-image => "one1img")->g_grid(-column => 5, -row => 3, -rowspan => 3);
+
+#Text
 my $zerotext1 = $page1->new_ttk__label(-text =>"Hello! I'm Zero.");
 $zerotext1->g_grid(-column => 0, -row=>2, -padx => 50);
 my $onetext1 = $page1->new_ttk__label(-text =>"Hello! I'm One.");
@@ -122,7 +146,7 @@ sub b13 {$bin = 1101;}
 sub b14 {$bin = 1110;}
 sub b15 {$bin = 1111;}
 
-#Tab2
+#####Tab2#####
 #Title
 my $title2 = $page2->new_ttk__label(-text => "Example", -font=> "TitleFont")->g_grid(-column=>0, -row=>0, -columnspan => 2, -pady => 10);
 my $question2 = $page2->new_ttk__label(-text => "Based on what you previously learned, what does 18 equal in binary?")->g_grid(-column=>0, -row => 1, -sticky => "w", -padx => 20);
@@ -143,43 +167,62 @@ $see->g_grid(-column => 0, -row => 6);
 sub basicanswer {
      if ($choice1->state) {
           $eighteen = "Correct!!!";
-          my $zero1 = $page2->new_ttk__label(-image=> "zeroimg")->g_grid(-column => 0, -row => 7, -rowspan => 3, -sticky => "e");
-          my $one1 = $page2->new_ttk__label(-image=> "oneimg")->g_grid(-column => 1, -row => 7, -rowspan => 3);
+          my $zero2a = $page2->new_ttk__label(-image=> "zero2aimg")->g_grid(-column => 0, -row => 7, -rowspan => 3, -sticky => "e");
+          my $one2a = $page2->new_ttk__label(-image=> "one2aimg")->g_grid(-column => 1, -row => 7, -rowspan => 3);
      } else {
-          $eighteen = "Incorrect, please try again...";
-          Tkx::image_create_photo("zeroimg1", -file => "zero1.gif");
-          my $zero1 = $page2->new_ttk__label(-image=> "zeroimg1")->g_grid(-column => 0, -row => 7, -sticky => "e");
-          Tkx::image_create_photo("oneimg1", -file => "one1.gif");
-my $one1 = $page2->new_ttk__label(-image=> "oneimg1")->g_grid(-column => 1, -row => 7);    
+          $eighteen = "Incorrect, please try again...";           
+          my $zero2b = $page2->new_ttk__label(-image=> "zero2bimg")->g_grid(-column => 0, -row => 7, -sticky => "e");
+          my $one2b = $page2->new_ttk__label(-image=> "one2bimg")->g_grid(-column => 1, -row => 7);   
      }
 }
 
-#Tab3
+#####Tab3#####
 #Title
 my $title3 = $page3->new_ttk__label( -text => "How to add in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
-#Text
-my $text3a = $page3->new_ttk__label(-text=> "Let's start with me. When adding \ntwo of me, I know I need to grow, \nbut I'm afraid to do so.  So I \nwill remain Zero.  Now One will \ntell his story.");
-$text3a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
-
-my $text3b = $page3->new_ttk__label(-text => "Now it's my turn.  When adding two of me, I know I need to grow, but \nI'm the biggest digit around, so I have to get creative. 
-
-I can't stay a One, so I become Zero.  But the other One gets carried over \nnext to Zero and we become best friends.  Therefore, One plus One \nin binary equals 10, which for you decimal folks, is equal to 2.
-
-Now lets talk about adding One and Zero together.");
-$text3b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
-
-my $text3c = $page3->new_ttk__label(-text => "So, when adding One and Zero, Zero refuses to change and One is waiting \nto grow, so therefore, we'll remain as One. Adding our paired friends Ten to \nOne, we see that One is more willing to be with the other One than its \noriginal friend Zero, there, Ten plus One in binary equals 11, which for \nyou decimal folks, is equal to 3.");
-$text3c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
-
-Tkx::image_create_photo("zero3img", -file => "zero3.gif");
 my $zero3 = $page3->new_ttk__label(-image => "zero3img")->g_grid(-column => 0, -row => 3, -sticky => "n");
-Tkx::image_create_photo("one3img", -file => "one3.gif");
 my $one3 = $page3->new_ttk__label(-image => "one3img")->g_grid(-column => 1, -row => 2, -sticky => "n");
-Tkx::image_create_photo("tenimg", -file => "ten.gif");
 my $ten3 = $page3->new_ttk__label(-image => "tenimg")->g_grid(-column => 1, -row => 4, -sticky => "ne");
 
-#Tab4
+#Text
+my $text3aEOF = <<EOF;
+Let's start with me. When adding two of me, 
+I know I need to grow, but I'm afraid to do
+so.  So I will remain Zero.  Now One will 
+tell his story.
+EOF
+my $text3a = $page3->new_ttk__label(-text=> $text3aEOF);
+$text3a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
+
+my $text3bEOF = <<EOF;
+Now it's my turn.  When adding two of me, I 
+know I need to grow, but I'm the biggest 
+digit around, so I have to get creative.  I 
+can't stay a One, so I become Zero.  But the
+other One gets carried over next to Zero and
+we become best friends.  Therefore, One plus 
+One in binary equals 10, which for you decimal
+folks, is equal to 2. Now lets talk about 
+adding One and Zero together.
+EOF
+
+my $text3b = $page3->new_ttk__label(-text => $text3aEOF);
+$text3b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
+
+my $text3cEOF = <<EOF;
+So, when adding One and Zero, Zero refuses to 
+change and One is waiting to grow, so therefore, 
+we'll remain as One. Adding our paired friends 
+Ten to One, we see that One is more willing to 
+be with the other One than its original friend
+Zero, there, Ten plus One in binary equals 11, 
+which for you decimal folks, is equal to 3.
+EOF
+
+my $text3c = $page3->new_ttk__label(-text => $text3cEOF);
+$text3c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
+
+#####Tab4#####
 #Title
 my $try4 = $page4->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
@@ -196,74 +239,69 @@ sub answer { $bin = 10001 }
 my $field4 = $page4->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $field4->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
-Tkx::image_create_photo("zero2img", -file => "zero2.gif");
-my $zero4 = $page4->new_ttk__label(-image=> "zero2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
-Tkx::image_create_photo("one2img", -file => "one2.gif");
-my $one4 = $page4->new_ttk__label(-image => "one2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
+#Image
+my $zero4 = $page4->new_ttk__label(-image=> "zero4img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
+my $one4 = $page4->new_ttk__label(-image => "one4img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
 
 #Canvas Title
 my $pad4 = $page4->new_ttk__label (-text => "Use the sketchpad below to assist you if you need it!")->g_grid(-column => 0, -row => 4, -columnspan => 2, -pady=> 10, -padx => 40);
 
 #Canvas
-my $canvas4 = $page4->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
-$canvas4->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
-$canvas4->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas4->canvasx($x); $lasty=$canvas4->canvasy($y)}, Tkx::Ev("%x","%y")]);
-$canvas4->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas4->canvasx($x),$canvas4->canvasy($y))}, Tkx::Ev("%x","%y")]);
-$canvas4->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
-$id = $canvas4->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
-$canvas4->bind($id, "<1>", sub {setColor("white")});
-$id = $canvas4->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
-$canvas4->bind($id, "<1>", sub {setColor("black")});
+my $canvas = $page4->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
+$canvas->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
+$canvas->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas->canvasx($x); $lasty=$canvas->canvasy($y)}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas->canvasx($x),$canvas->canvasy($y))}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
+$id = $canvas->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
+$canvas->bind($id, "<1>", sub {setColor("white")});
+$id = $canvas->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
+$canvas->bind($id, "<1>", sub {setColor("black")});
 
-sub setColor {
-    my ($newcolor) = @_;
-    $color = $newcolor;
-    $canvas4->dtag_all("paletteSelected");
-    $canvas4->itemconfigure("palette", -outline => "black");
-    $canvas4->addtag("paletteSelected", withtag => "palette".$color);
-    $canvas4->itemconfigure("paletteSelected", -outline => "#999999");
-}
-setColor "black";
-#$canvas->itemconfigure("palette", -width => 5);
-
-sub addLine {
-    my ($x,$y) = @_;
-     if ($color eq "white") {
-    $canvas4->create_line($lastx,$lasty,$x,$y, -fill => $color, -width => 20, -tags => "currentline");
-     } else {
-     $canvas4->create_line($lastx,$lasty,$x,$y, -fill => $color, -width => 5, -tags => "currentline");
-     }
-     $lastx = $x; $lasty = $y;
-}
-sub doneStroke {
-     if ($color eq "white") {
-          $canvas4->itemconfigure("currentline", -width =>20);
-     } else {
-          $canvas4->itemconfigure("currentline", -width =>2);
-     }
-}
-
-#Tab5
-
+#####Tab5####
 #Title
 my $title5 = $page5->new_ttk__label( -text => "How to subtract in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
+#Image
+my $zero5 = $page5->new_ttk__label(-image => "zero5img")->g_grid(-column => 0, -row => 3, -sticky => "n");
+my $one5 = $page5->new_ttk__label(-image => "one5img")->g_grid(-column => 1, -row => 2, -sticky => "n");
+
 #Text
-my $text5a = $page5->new_ttk__label(-text=> "Now it's time to learn subtraction.  It's similar to addition instead of growing, we want to shrink.\n  Let's start with me, Zero!  I can't shrink to a larger number, so I will remain zero.  Now it's One's turn.");
+
+my $text5aEOF = <<EOF;
+Now it's time to learn subtraction. It's similar 
+to addition instead of growing, we want to shrink.
+Let's start with me, Zero!  I can't shrink to a 
+larger number, so I will remain zero.  Now it's 
+One's turn.
+EOF
+
+my $text5a = $page5->new_ttk__label(-text=> $text5aEOF);
 $text5a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
 
-my $text5b = $page5->new_ttk__label(-text => "I too need to shrink, but I can't stay one, so I must also go to zero.  Now we'll explain what happens you involve one and zero, where things get interesting!");
+my $text5bEOF = <<EOF;
+I too need to shrink, but I can't stay one, so I 
+must also go to zero. Now we'll explain what 
+happens you involve one and zero, where things 
+get interesting!
+EOF
+
+my $text5b = $page5->new_ttk__label(-text => $text5bEOF);
 $text5b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
 
-my $text5c = $page5->new_ttk__label(-text => "It's easier to subtract Zero from One than One from Zero.  Why? Because One is bigger than zero.\n  When subtracting zero from one, nothing changes and the value remains.  BUT, when you subtract one from zero, you need help because one is larger than zero.  The value equals one, but you must borrow from the next digit over to make it work.");
+my $text5cEOF = <<EOF;
+It's easier to subtract Zero from One than One 
+from Zero.  Why? Because One is bigger than zero.
+When subtracting zero from one, nothing changes 
+and the value remains.  BUT, when you subtract one
+from zero, you need help because one is larger than
+zero. The value equals one, but you must borrow 
+from the next digit over to make it work.
+EOF
+
+my $text5c = $page5->new_ttk__label(-text => $text5cEOF);
 $text5c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
-#Tkx::image_create_photo("zero5img", -file => "zero5.gif");
-#my $zero5 = $page5->new_ttk__label(-image => "zero5img")->g_grid(-column => 0, -row => 3, -sticky => "n");
-#Tkx::image_create_photo("one5img", -file => "one5.gif");
-#my $one5 = $page5->new_ttk__label(-image => "one5img")->g_grid(-column => 1, -row => 2, -sticky => "n");
-
-#Tab6
+#####Tab6#####
 #Title
 my $try6 = $page6->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
@@ -279,29 +317,32 @@ sub answer6 { $bin = 11010 }
 #Answer
 my $field6 = $page6->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $field6->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
-Tkx::image_create_photo("zero2img", -file => "zero2.gif");
-#my $zero3 = $page6->new_ttk__label(-image=> "zero2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
-Tkx::image_create_photo("one2img", -file => "one2.gif");
-#my $one3 = $page6->new_ttk__label(-image => "one2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
+
+#Image
+my $zero6 = $page6->new_ttk__label(-image=> "zero6img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
+my $one6 = $page6->new_ttk__label(-image => "one6img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
 
 #Canvas Title
 my $pad6 = $page6->new_ttk__label (-text => "Use the sketchpad below to assist you if you need it!")->g_grid(-column => 0, -row => 4, -columnspan => 2, -pady=> 10, -padx => 40);
 
 #Canvas
-my $canvas6 = $page6->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
-$canvas6->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
-$canvas6->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas6->canvasx($x); $lasty=$canvas6->canvasy($y)}, Tkx::Ev("%x","%y")]);
-$canvas6->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas6->canvasx($x),$canvas6->canvasy($y))}, Tkx::Ev("%x","%y")]);
-$canvas6->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
-$id = $canvas6->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
-$canvas6->bind($id, "<1>", sub {setColor("white")});
-$id = $canvas6->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
-$canvas6->bind($id, "<1>", sub {setColor("black")});
+$canvas = $page6->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
+$canvas->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
+$canvas->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas->canvasx($x); $lasty=$canvas->canvasy($y)}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas->canvasx($x),$canvas->canvasy($y))}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
+$id = $canvas->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
+$canvas->bind($id, "<1>", sub {setColor("white")});
+$id = $canvas->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
+$canvas->bind($id, "<1>", sub {setColor("black")});
 
-#Tab7
-
+#####Tab7#####
 #Title
 my $title7 = $page7->new_ttk__label( -text => "How to multiply in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
+
+#Image
+my $zero7 = $page7->new_ttk__label(-image => "zero7img")->g_grid(-column => 0, -row => 3, -sticky => "n");
+my $one7 = $page7->new_ttk__label(-image => "one7img")->g_grid(-column => 1, -row => 2, -sticky => "n");
 
 #Text
 my $text7a = $page7->new_ttk__label(-text=> "Insert text");
@@ -313,12 +354,7 @@ $text7b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nw
 my $text7c = $page7->new_ttk__label(-text => "Insert text.");
 $text7c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
-#Tkx::image_create_photo("zero7img", -file => "zero7.gif");
-#my $zero7 = $page7->new_ttk__label(-image => "zero7img")->g_grid(-column => 0, -row => 3, -sticky => "n");
-#Tkx::image_create_photo("one7img", -file => "one7.gif");
-#my $one7 = $page7->new_ttk__label(-image => "one7img")->g_grid(-column => 1, -row => 2, -sticky => "n");
-
-#Tab8
+#####Tab8#####
 #Title
 my $try8 = $page8->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
@@ -335,30 +371,32 @@ sub answer8 { $bin = 11010 }
 my $field8 = $page8->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $field8->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
-#Tkx::image_create_photo("zero8img", -file => "zero8.gif");
-#my $zero8 = $page8->new_ttk__label(-image=> "zero8img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
-#Tkx::image_create_photo("one8img", -file => "one8.gif");
-#my $one8 = $page8->new_ttk__label(-image => "one2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
+#Image
+my $zero8 = $page8->new_ttk__label(-image=> "zero8img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
+my $one8 = $page8->new_ttk__label(-image => "one8img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
 
 #Canvas Title
 my $pad8 = $page8->new_ttk__label (-text => "Use the sketchpad below to assist you if you need it!")->g_grid(-column => 0, -row => 4, -columnspan => 2, -pady=> 10, -padx => 40);
 
 #Canvas
-my $canvas8 = $page8->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
-$canvas8->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
-$canvas8->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas8->canvasx($x); $lasty=$canvas8->canvasy($y)}, Tkx::Ev("%x","%y")]);
-$canvas8->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas8->canvasx($x),$canvas8->canvasy($y))}, Tkx::Ev("%x","%y")]);
-$canvas8->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
-$id = $canvas8->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
-$canvas8->bind($id, "<1>", sub {setColor("white")});
-$id = $canvas8->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
-$canvas8->bind($id, "<1>", sub {setColor("black")});
+$canvas = $page8->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
+$canvas->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
+$canvas->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas->canvasx($x); $lasty=$canvas->canvasy($y)}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas->canvasx($x),$canvas->canvasy($y))}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
+$id = $canvas->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
+$canvas->bind($id, "<1>", sub {setColor("white")});
+$id = $canvas->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
+$canvas->bind($id, "<1>", sub {setColor("black")});
 
 
-#Tab9
-
+#####Tab9#####
 #Title
 my $title9 = $page9->new_ttk__label( -text => "How to divide in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
+
+#Image
+my $zero9 = $page9->new_ttk__label(-image => "zero9img")->g_grid(-column => 0, -row => 3, -sticky => "n");
+my $one9 = $page9->new_ttk__label(-image => "one9img")->g_grid(-column => 1, -row => 2, -sticky => "n");
 
 #Text
 my $text9a = $page9->new_ttk__label(-text=> "Insert text");
@@ -370,12 +408,7 @@ $text9b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nw
 my $text9c = $page9->new_ttk__label(-text => "Insert text.");
 $text9c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
-#Tkx::image_create_photo("zero9img", -file => "zero9.gif");
-#my $zero9 = $page9->new_ttk__label(-image => "zero9img")->g_grid(-column => 0, -row => 3, -sticky => "n");
-#Tkx::image_create_photo("one9img", -file => "one9.gif");
-#my $one9 = $page9->new_ttk__label(-image => "one9img")->g_grid(-column => 1, -row => 2, -sticky => "n");
-
-#Tab8
+#####Tab10#####
 #Title
 my $try10 = $page10->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
@@ -392,24 +425,51 @@ sub answer10 { $bin = 11010 }
 my $field10 = $page10->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $field10->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
-#Tkx::image_create_photo("zero8img", -file => "zero8.gif");
-#my $zero10 = $page10->new_ttk__label(-image=> "zero8img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
-#Tkx::image_create_photo("one8img", -file => "one8.gif");
-#my $one10 = $page10->new_ttk__label(-image => "one2img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
+my $zero10 = $page10->new_ttk__label(-image=> "zero10img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
+my $one10 = $page10->new_ttk__label(-image => "one10img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
 
 #Canvas Title
 my $pad10 = $page10->new_ttk__label (-text => "Use the sketchpad below to assist you if you need it!")->g_grid(-column => 0, -row => 4, -columnspan => 2, -pady=> 10, -padx => 40);
 
 #Canvas
-my $canvas10 = $page10->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
-$canvas10->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
-$canvas10->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas10->canvasx($x); $lasty=$canvas10->canvasy($y)}, Tkx::Ev("%x","%y")]);
-$canvas10->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas10->canvasx($x),$canvas10->canvasy($y))}, Tkx::Ev("%x","%y")]);
-$canvas10->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
-$id = $canvas10->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
-$canvas10->bind($id, "<1>", sub {setColor("white")});
-$id = $canvas10->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
-$canvas10->bind($id, "<1>", sub {setColor("black")});
+$canvas = $page4->new_tk__canvas(-scrollregion => "0 0 0 0", -width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
+$canvas->g_grid(-column=> 0, -row=> 5, -columnspan => 2, -padx=> 20);
+$canvas->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvas->canvasx($x); $lasty=$canvas->canvasy($y)}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvas->canvasx($x),$canvas->canvasy($y))}, Tkx::Ev("%x","%y")]);
+$canvas->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
+$id = $canvas->create_rectangle(10, 35, 30, 55, -fill => "white", -tags => "palette palettewhite");
+$canvas->bind($id, "<1>", sub {setColor("white")});
+$id = $canvas->create_rectangle(10, 60, 30, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
+$canvas->bind($id, "<1>", sub {setColor("black")});
+
+#Canvas subroutines
+sub setColor {
+    my ($newcolor) = @_;
+    $color = $newcolor;
+    $canvas->dtag_all("paletteSelected");
+    $canvas->itemconfigure("palette", -outline => "black");
+    $canvas->addtag("paletteSelected", withtag => "palette".$color);
+    $canvas->itemconfigure("paletteSelected", -outline => "#999999");
+}
+setColor "black";
+
+sub addLine {
+    my ($x,$y) = @_;
+     if ($color eq "white") {
+             $canvas->create_line($lastx,$lasty,$x,$y, -fill => $color, -width => 20, -tags => "currentline");
+     } else {
+             $canvas->create_line($lastx,$lasty,$x,$y, -fill => $color, -width => 5, -tags => "currentline");
+     }
+     $lastx = $x; $lasty = $y;
+}
+
+sub doneStroke {
+     if ($color eq "white") {
+          $canvas->itemconfigure("currentline", -width =>20);
+     } else {
+          $canvas->itemconfigure("currentline", -width =>2);
+     }
+}
 
 #Run program
 Tkx::MainLoop();
