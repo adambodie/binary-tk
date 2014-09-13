@@ -58,10 +58,8 @@ $note->g_grid(-column => 0, -row => 1, -sticky => "nwes");
 #Create Images
 Tkx::image_create_photo("zero1img", -file => "zero1.gif");
 Tkx::image_create_photo("one1img", -file => "one1.gif");
-Tkx::image_create_photo("zero2aimg", -file => "zero2a.gif");
-Tkx::image_create_photo("zero2bimg", -file => "zero2b.gif");     
-Tkx::image_create_photo("one2aimg", -file => "one2a.gif");
-Tkx::image_create_photo("one2bimg", -file => "one2b.gif");
+Tkx::image_create_photo("zero2img", -file => "zero2.gif");    
+Tkx::image_create_photo("one2img", -file => "one2.gif");
 Tkx::image_create_photo("zero3img", -file => "zero3.gif");
 Tkx::image_create_photo("one3img", -file => "one3.gif");
 Tkx::image_create_photo("tenimg", -file => "ten.gif");
@@ -69,6 +67,7 @@ Tkx::image_create_photo("zero4img", -file => "zero4.gif");
 Tkx::image_create_photo("one4img", -file => "one4.gif");
 Tkx::image_create_photo("zero5img", -file => "zero5.gif");
 Tkx::image_create_photo("one5img", -file => "one5.gif");
+Tkx::image_create_photo("zerooneimg", -file => "zeroone.gif");
 Tkx::image_create_photo("zero6img", -file => "zero6.gif");
 Tkx::image_create_photo("one6img", -file => "one6.gif");
 Tkx::image_create_photo("zero7img", -file => "zero7.gif");
@@ -83,14 +82,16 @@ Tkx::image_create_photo("one10img", -file => "one10.gif");
 #Tkx::image_create_photo("one11img", -file => "one11.gif");
 #Tkx::image_create_photo("zero12img", -file => "zero12.gif");
 #Tkx::image_create_photo("one12img", -file => "one12.gif");
-#Tkx::image_create_photo("elevenimg", -file => "eleven.gif");
+Tkx::image_create_photo("ten2img", -file => "ten2.gif");
+Tkx::image_create_photo("eleven1img", -file => "eleven1.gif");
+Tkx::image_create_photo("zeroone2img", -file => "zeroone2.gif");
 
 #####Tab1 Basic#####
 #Title
 my $titleBasic = $page1->new_ttk__label( -text => "Basic Binary Values", -font => "TitleFont")->g_grid(-column => 1, -row => 0, -columnspan => 4, -pady => 20);
 
 #Buttons
-my $b0 = $page1->new_ttk__button(-width => 5, -text => 0, -command => sub {canvasScreen()});
+my $b0 = $page1->new_ttk__button(-width => 5, -text => 0, -command => sub {b0()});
 $b0->g_grid(-column => 1, -row => 2);
 my $b1 = $page1->new_ttk__button(-width => 5, -text => 1, -command => sub {b1()});
 $b1->g_grid(-column => 2, -row => 2);
@@ -179,12 +180,12 @@ $seeAnswer->g_grid(-column => 0, -row => 6);
 sub basicanswer {
      if ($choice1->state) {
           $eighteen = "Correct!!!";
-          my $zero2a = $page2->new_ttk__label(-image=> "zero2aimg")->g_grid(-column => 0, -row => 7, -rowspan => 3, -sticky => "e");
-          my $one2a = $page2->new_ttk__label(-image=> "one2aimg")->g_grid(-column => 1, -row => 7, -rowspan => 3);
+          my $zero2a = $page2->new_ttk__label(-image=> "zero1img")->g_grid(-column => 0, -row => 7, -rowspan => 3, -sticky => "e");
+          my $one2a = $page2->new_ttk__label(-image=> "one1img")->g_grid(-column => 1, -row => 7, -rowspan => 3);
      } else {
-          $eighteen = "Incorrect, please try again...";       
-          my $zero2b = $page2->new_ttk__label(-image=> "zero2bimg")->g_grid(-column => 0, -row => 7, -sticky => "e");
-          my $one2b = $page2->new_ttk__label(-image=> "one2bimg")->g_grid(-column => 1, -row => 7);
+          $eighteen = "Incorrect, please try again...";      
+          my $zero2b = $page2->new_ttk__label(-image=> "zero2img")->g_grid(-column => 0, -row => 7, -sticky => "e");
+          my $one2b = $page2->new_ttk__label(-image=> "one2img")->g_grid(-column => 1, -row => 7);
      }
 }
 
@@ -198,10 +199,9 @@ my $ten3 = $page3->new_ttk__label(-image => "tenimg")->g_grid(-column => 1, -row
 
 #Text
 my $text3aEOF = <<EOF;
-Let's start with me. When adding two of me,
-I know I need to grow, but I'm afraid to do
-so.  So I will remain Zero.  Now One will
-tell his story.
+Let's start with me. When adding two of me, I know 
+I need to grow, but I'm afraid to do so.  So I will 
+remain Zero.  Now One will tell his story.
 EOF
 my $text3a = $page3->new_ttk__label(-text=> $text3aEOF);
 $text3a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
@@ -218,13 +218,13 @@ folks, is equal to 2. Now lets talk about
 adding One and Zero together.
 EOF
 my $text3b = $page3->new_ttk__label(-text => $text3aEOF);
-$text3b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
+$text3b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "n");
 
 my $text3cEOF = <<EOF;
-So, when adding One and Zero, Zero refuses to change and One 
-is waiting to grow, so therefore, we'll remain as One.  Adding our 
-paired friends Ten to One, we see that One is more  willing to be 
-with the other One than its original friend Zero, therefore, Ten plus 
+So, when adding One and Zero, Zero refuses to change and One
+is waiting to grow, so therefore, we'll remain as One.  Adding our
+paired friends Ten to One, we see that One is more  willing to be
+with the other One than its original friend Zero, therefore, Ten plus
 One in binary equals 11, which for you decimal folks, is equal to 3.
 EOF
 my $text3c = $page3->new_ttk__label(-text => $text3cEOF);
@@ -236,14 +236,14 @@ my $tryAdd = $page4->new_ttk__label( -text => "Try it yourself", -font=> "TitleF
 
 my $example4EOF = <<EOF;
 Example:        1010
-                    + 1111
+                     + 1111
 EOF
 #Example
 my $example4 = $page4->new_ttk__label( -text => $example4EOF, -font => "HeaderFont")->g_grid(-column => 0, -row => 1, -sticky => "w", -padx => 25);
 
 #Button
 my $answerAddButton = $page4->new_ttk__button(-text => "Click to see Answer", -command => sub{answer()});
-$answerAddButton->g_grid(-column => 0, -row => 3, -sticky => "w", -padx => 100, -pady => 20);
+$answerAddButton->g_grid(-column => 0, -row => 3, -sticky => "nw", -padx => 100, -pady => 20);
 sub answer { $bin = 10001 }
 
 #Answer
@@ -262,37 +262,35 @@ my $sketchLabel4 = $page4->new_ttk__label (-text => "Click on the Sketch Pad but
 my $titleSubtract = $page5->new_ttk__label( -text => "How to subtract in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
 #Image
-my $zero5 = $page5->new_ttk__label(-image => "zero5img")->g_grid(-column => 0, -row => 3, -sticky => "n");
-my $one5 = $page5->new_ttk__label(-image => "one5img")->g_grid(-column => 1, -row => 2, -sticky => "n");
+my $zero5 = $page5->new_ttk__label(-image => "zero5img")->g_grid(-column => 0, -row => 3, -sticky => "nw");
+my $one5 = $page5->new_ttk__label(-image => "one5img")->g_grid(-column => 1, -row => 2, -sticky => "nw");
+my $zeroone = $page5->new_ttk__label(-image => "zerooneimg")->g_grid(-column => 0, -row => 4, -sticky => "n");
 
 #Text
 my $text5aEOF = <<EOF;
-Now it's time to learn subtraction. It's similar to 
+Now it's time to learn subtraction. It's similar to
 addition instead of growing, we want to shrink.
-Let's start with me, Zero!  I can't shrink to a larger 
+Let's start with me, Zero!  I can't shrink to a larger
 number, so I will remain zero.  Now it's One's turn.
 EOF
 my $text5a = $page5->new_ttk__label(-text=> $text5aEOF);
-$text5a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
+$text5a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "nw");
 
 my $text5bEOF = <<EOF;
 I too need to shrink, but I can't stay one, so I
 must also go to zero. Now we'll explain what
 happens you involve one and zero, where things
 get interesting!
+It's easier to subtract Zero from One than One 
+from Zero.  Why? Because One is bigger than zero. 
+When subtracting zero from one, nothing changes 
+and the value remains.  BUT, when you subtract one 
+from zero, you need help because one is larger than
+zero. The value equals one, but you must borrow from 
+the next digit over to make it work.
 EOF
 my $text5b = $page5->new_ttk__label(-text => $text5bEOF);
 $text5b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
-
-my $text5cEOF = <<EOF;
-It's easier to subtract Zero from One than One from Zero.  Why? 
-Because One is bigger than zero. When subtracting zero from one, 
-nothing changes and the value remains.  BUT, when you subtract one 
-from zero, you need help because one is larger than zero. The value 
-equals one, but you must borrow from the next digit over to make it work.
-EOF
-my $text5c = $page5->new_ttk__label(-text => $text5cEOF);
-$text5c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
 #####Tab6 Subtraction Ex#####
 #Title
@@ -300,8 +298,8 @@ my $trySubtract = $page6->new_ttk__label( -text => "Try it yourself", -font=> "T
 
 #Example
 my $example6EOF = <<EOF;
-Example:           11001
-                      -  00111
+Example:        11001
+                    -  00111
 EOF
 my $example6 = $page6->new_ttk__label( -text => $example6EOF, -font => "HeaderFont"
 )->g_grid(-column => 0, -row => 1, -sticky => "w", -padx => 25);
@@ -316,7 +314,7 @@ my $answerSubtract = $page6->new_ttk__entry(-width => 6, -textvariable => \$bin,
 $answerSubtract->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
 #Image
-my $zero6 = $page6->new_ttk__label(-image=> "zero6img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
+my $zero6 = $page6->new_ttk__label(-image=> "zero6img")->g_grid(-column => 2, -row => 2, -rowspan => 2, -sticky=> "w");
 my $one6 = $page6->new_ttk__label(-image => "one6img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
 
 #Canvas Title
@@ -327,9 +325,8 @@ my $sketchLabel6 = $page6->new_ttk__label (-text => "Click on the Sketch Pad but
 my $titleMultiply = $page7->new_ttk__label( -text => "How to Multiply in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
 #Image
-my $zero7 = $page7->new_ttk__label(-image => "zero7img")->g_grid(-column => 0, -row => 3, -sticky => "n");
-my $one7 = $page7->new_ttk__label(-image => "one7img")->g_grid(-column => 1, -row => 2, -sticky => "n");
-
+my $eleven = $page7->new_ttk__label(-image => "eleven1img")->g_grid(-column => 0, -row => 3, -sticky => "n");
+my $ten2 = $page7->new_ttk__label(-image => "ten2img")->g_grid(-column => 1, -row => 2, -sticky => "n");
 #Text
 my $text7aEOF = <<EOF;
 Now it's time to discuss multiplication. We'll
@@ -357,7 +354,7 @@ my $text7b = $page7->new_ttk__label(-text => $text7bEOF);
 $text7b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
 
 my $text7cEOF = <<EOF;
-Now we have to add the two results to get our answer. Of course, 
+Now we have to add the two results to get our answer. Of course,
 adding zero to anything won't change our answer, so we get 110.
 EOF
 my $text7c = $page7->new_ttk__label(-text => $text7cEOF);
@@ -386,7 +383,7 @@ $answerMultiply->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
 #Image
 my $zero8 = $page8->new_ttk__label(-image=> "zero8img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
-my $one8 = $page8->new_ttk__label(-image => "one8img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
+my $one8 = $page8->new_ttk__label(-image => "one8img")->g_grid(-column => 2, -row => 2, -rowspan => 2, -sticky => "e");
 
 #Canvas Title
 my $sketchLabel8 = $page8->new_ttk__label (-text => "Click on the Sketch Pad button above to assist you if you need it!")->g_grid(-column => 0, -row => 4, -columnspan => 2, -pady=> 10, -padx => 40);
@@ -396,48 +393,55 @@ my $sketchLabel8 = $page8->new_ttk__label (-text => "Click on the Sketch Pad but
 my $titleDivide = $page9->new_ttk__label( -text => "How to Divide in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
 #Image
-my $zero9 = $page9->new_ttk__label(-image => "zero9img")->g_grid(-column => 0, -row => 3, -sticky => "n");
-my $one9 = $page9->new_ttk__label(-image => "one9img")->g_grid(-column => 1, -row => 2, -sticky => "n");
+my $zeroone2 = $page9->new_ttk__label(-image => "zeroone2img")->g_grid(-column => 0, -row => 3, -sticky => "n");
 
 #Text
 
 my $text9aEOF = <<EOF;
-Insert text here
+Now it's time to teach you about division. Dividing in binary is like you would do in decimal.
+To show you how, let's start by dividing 110 by 11010. In order to get the answer, check to see if 110 divides
+equally into the first digit.  If it does, write 1 above the digit. If not, write 0 above it and add the next digit to it and compare.
 EOF
 my $text9a = $page9->new_ttk__label(-text=> $text9aEOF);
 $text9a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
 
 my $text9bEOF = <<EOF;
-Insert text here
+When you find a number that is equal or greater than the dividing number, write 1 above the digit and then subtract
+the divisible number from the base number. In our example 110 - 110 equals 0.  But don't forget the other digits from the
+original number. Add them to your new number, which for us, equals 10.  Repeat the process until you have a number that
+can't be divided by the divisible number. For us, 10 is less than 110 so it can't be used.  But what do we do with this leftover? 
+It becomes a remainder. It's part of the number but not a whole part. Thus, our answer to  110 / 11010 is 100 with a remainder of 10.
 EOF
-my $text9b = $page9->new_ttk__label(-text => $text9bEOF);
-$text9b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
 
-my $text9cEOF = <<EOF;
-Insert text here
-EOF
-my $text9c = $page9->new_ttk__label(-text => $text9cEOF);
-$text9c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
+my $text9b = $page9->new_ttk__label(-text => $text9bEOF);
+$text9b->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
 #####Tab10 Division Ex#####
 #Title
 my $try10 = $page10->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
 #Example
-my $example10 = $page10->new_ttk__label( -text => "Example:", -font => "HeaderFont"
+my $example10EOF = <<EOF;
+Example:       
+        ________
+110 ) 111010
+
+EOF
+ 
+my $example10 = $page10->new_ttk__label( -text => $example10EOF, -font => "HeaderFont"
 )->g_grid(-column => 0, -row => 1, -sticky => "w", -padx => 25);
 
 #Button
 my $answerbutton10 = $page10->new_ttk__button(-text => "Click to see Answer", -command => sub{answer10()});
 $answerbutton10->g_grid(-column => 0, -row => 3, -sticky => "w", -padx => 100, -pady => 20);
-sub answer10 { $bin = 0 }
+sub answer10 { $bin = "1001 with a remainder of 100"  }
 
 #Answer
 my $answerDivide = $page10->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $answerDivide->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
-my $zero10 = $page10->new_ttk__label(-image=> "zero10img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
-my $one10 = $page10->new_ttk__label(-image => "one10img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky => "e");
+my $zero10 = $page10->new_ttk__label(-image=> "zero4img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
+my $one10 = $page10->new_ttk__label(-image => "one6img")->g_grid(-column => 2, -row => 2, -rowspan => 2, -sticky => "e");
 
 #Canvas Title
 my $sketchLabel10 = $page10->new_ttk__label (-text => "Click on the Sketch Pad button above to assist you if you need it!")->g_grid(-column => 0, -row => 4, -columnspan => 2, -pady=> 10, -padx => 40);
@@ -448,27 +452,39 @@ my $sketchLabel10 = $page10->new_ttk__label (-text => "Click on the Sketch Pad b
 my $titleBigNumber = $page11->new_ttk__label( -text => "Big Numbers", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
 #Image
-#my $zero11 = $page11->new_ttk__label(-image => "zero11img")->g_grid(-column => 0, -row => 3, -sticky => "n");
+my $zero11 = $page11->new_ttk__label(-image => "zero10img")->g_grid(-column => 0, -row => 3, -sticky => "ne");
 #my $one11 = $page11->new_ttk__label(-image => "one11img")->g_grid(-column => 1, -row => 2, -sticky => "n");
+
+
 
 #Text
 my $text11aEOF = <<EOF;
-Insert text here
+We've taught you how to do basic arithmetic with binary numbers, addition, subtraction, multiplication
+and division.  But what happens if you need a really large binary numbers, like binary number 10000000?
+The trick is to start with the decimal number and convert to binary.  If you remember this trick, it
+will help you significantly.  When a binary number starts with 1 and only has 0's after it, the decimal 
+equivalent is 2 * the number of 0's following it. 2 is equal to 2 * 1.  The binary equivalent is 10, 
+which contains one 0.  Therefore 2^x will always be in binary 1 followed by x amount of zeros.  2^8 
+in binary equals 100000000, or 256 in decimal
 EOF
 my $text11a = $page11->new_ttk__label(-text=> $text11aEOF);
 $text11a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
 
 my $text11bEOF = <<EOF;
-Insert text here
+Once you figure this out, you can add or subtract
+from this number to determine other numbers.
+For example, to determine what 260 is in binary,
+you determine that it is great than 256 but less than
+512 (256 X 2), so the binary base with by 100000000,
+which is 256 in decimal.  Subtract 260 from 256 to get
+4 in decimal.  Now you have a smaller binary number 
+to add to 100000000, which is 100.  So you can easily 
+figure out that 260 in binary is 100000100. This also 
+works for subtraction, multiplication and division.
 EOF
-my $text11b = $page11->new_ttk__label(-text => $text11bEOF);
-$text11b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
 
-my $text11cEOF = <<EOF;
-Insert text here
-EOF
-my $text11c = $page11->new_ttk__label(-text => $text11cEOF);
-$text11c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
+my $text11b = $page11->new_ttk__label(-text => $text11bEOF);
+$text11b->g_grid( -column=> 0, -row => 3, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
 #####Tab12 Big Number Ex#####
 
@@ -476,15 +492,20 @@ $text11c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan =
 my $try12 = $page12->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
 #Example
-my $example12 = $page12->new_ttk__label( -text => "Example:", -font => "HeaderFont")->g_grid(-column => 0, -row => 1, -sticky => "w", -padx => 25);
+my $example12EOF = <<EOF;
+Example:
+Based on what you learned in in the previous section,
+what is 1025 in binary:
+EOF
+my $example12 = $page12->new_ttk__label( -text => $example12EOF, -font => "HeaderFont")->g_grid(-column => 0, -row => 1, -sticky => "w", -padx => 25);
 
 #Button
 my $answerBigButton = $page12->new_ttk__button(-text => "Click to see Answer", -command => sub{answer12()});
 $answerBigButton->g_grid(-column => 0, -row => 3, -sticky => "w", -padx => 100, -pady => 20);
-sub answer12 { $bin = 0 }
+sub answer12 { $bin = 10000001 }
 
 #Answer
-my $answerBig = $page12->new_ttk__entry(-width => 6, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
+my $answerBig = $page12->new_ttk__entry(-width => 20, -textvariable => \$bin, -justify=> "right", -font=> "HeaderFont");
 $answerBig->g_grid(-column => 0, -row => 2, -sticky => "w", -padx => 120);
 
 #my $zero12 = $page12->new_ttk__label(-image=> "zero12img")->g_grid(-column => 1, -row => 2, -rowspan => 2, -sticky=> "w");
@@ -530,11 +551,8 @@ sub addLine {
 }
 
 sub doneStroke {
-      #if ($color eq "white") {
-      #    $canvasScreen->itemconfigure("currentline", -width =>20);
-      # } else {
-          $canvasScreen->itemconfigure("currentline", -width =>2);
-      #}
+          $canvasScreen->itemconfigure("currentline", -width =>5);
+       
 }
 
 #Run program
