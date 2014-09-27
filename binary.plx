@@ -156,8 +156,8 @@ sub b15 {$bin = 1111;}
 
 #####Tab2 Basic Ex#####
 #Title
-my $titleBasicEx = $page2->new_ttk__label(-text => "Example", -font=> "TitleFont")->g_grid(-column=>0, -row=>0, -columnspan => 2, -pady => 10);
-my $questionBasic = $page2->new_ttk__label(-text => "Based on what you previously learned, what does 18 equal in binary?")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
+my $titleBasicEx = $page2->new_ttk__label(-text => "Try it yourself", -font=> "TitleFont")->g_grid(-column=>0, -row=>0, -columnspan => 3, -pady => 10);
+my $questionBasic = $page2->new_ttk__label(-text => "What does 18 equal in binary?")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
 my $answerBasic;
 my $choice1A = $page2->new_ttk__radiobutton(-text=>"10010", -variable => "\$answerBasic", -value => "10010");
 $choice1A->g_grid(-column=> 0, -row=> 2, -sticky => "w", -padx => 20, -pady => 5);
@@ -167,8 +167,12 @@ my $choice1C = $page2->new_ttk__radiobutton(-text=>"11001", -variable => "\$answ
 $choice1C->g_grid(-column=> 0, -row=> 4, -sticky => "w", -padx => 20, -pady => 5);
 my $choice1D = $page2->new_ttk__radiobutton(-text=>"18", -variable => "\$answerBasic", -value => "18");
 $choice1D->g_grid(-column=> 0, -row=> 5, -sticky => "w", -padx => 20, -pady => 5);
+
+#Button
 my $clickButton = $page2->new_ttk__button(-width => 10, -text => "Click me!", -command => sub {basicanswer()});
-$clickButton->g_grid(-column => 1, -row => 6, -sticky => "w", -padx => 20, -pady => 5);
+$clickButton->g_grid(-column => 1, -row => 6, -sticky => "w", -padx => 10, -pady => 5);
+
+#Entry
 my $seeAnswer = $page2->new_ttk__entry(-textvariable=> \$answerBasic, -width=> 30);
 $seeAnswer->g_grid(-column => 0, -row => 6, -padx => 20);
 
@@ -178,7 +182,7 @@ sub basicanswer {
           my $zero2a = $page2->new_ttk__label(-image=> "zero1img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one2a = $page2->new_ttk__label(-image=> "one1img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      } else {
-          $answerBasic = "Incorrect, please try again...";  
+          $answerBasic = "Incorrect, please try again..."; 
           my $zero2b = $page2->new_ttk__label(-image=> "zero2img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one2b = $page2->new_ttk__label(-image=> "one2img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      }
@@ -227,7 +231,7 @@ $text3c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan =>
 my $tryAdd = $page4->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
 #Example
-my $example4 = $page4->new_ttk__label( -text => "Question: 1010 + 1111 = ", -font => "HeaderFont")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
+my $example4 = $page4->new_ttk__label( -text => "What do binary numbers 1010 + 1111 = ")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
 
 #RadioButtons
 my $answerAdd;
@@ -254,7 +258,7 @@ sub basicanswer2 {
           my $zero4a = $page4->new_ttk__label(-image=> "zero4img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one4a = $page4->new_ttk__label(-image=> "one4img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      } else {
-          $answerAdd = "Incorrect, please try again...";  
+          $answerAdd = "Incorrect, please try again..."; 
           my $zero4b = $page4->new_ttk__label(-image=> "zero4bimg")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one4b = $page4->new_ttk__label(-image=> "one4bimg")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      }
@@ -266,7 +270,7 @@ sub basicanswer2 {
 my $titleSubtract = $page5->new_ttk__label( -text => "How to subtract in Binary", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 2, -pady => 10);
 
 #Image
-my $zero5 = $page5->new_ttk__label(-image => "zero5img")->g_grid(-column => 0, -row => 3, -sticky => "nw");
+my $zero5 = $page5->new_ttk__label(-image => "zero5img")->g_grid(-column => 0, -row => 3, -sticky => "n");
 my $one5 = $page5->new_ttk__label(-image => "one5img")->g_grid(-column => 1, -row => 2, -sticky => "nw");
 my $zeroone = $page5->new_ttk__label(-image => "zerooneimg")->g_grid(-column => 0, -row => 4, -sticky => "n");
 
@@ -278,7 +282,7 @@ Let's start with me, Zero!  I can't shrink to a larger
 number, so I will remain zero.  Now it's One's turn.
 EOF
 my $text5a = $page5->new_ttk__label(-text=> $text5aEOF);
-$text5a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "nw");
+$text5a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "w");
 
 my $text5bEOF = <<EOF;
 I too need to shrink, but I can't stay one, so I
@@ -307,7 +311,7 @@ $text5c->g_grid( -column=> 1, -row => 4, -padx => 20, -pady=> 20, -sticky => "nw
 my $trySubtract = $page6->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
 #Example
-my $example6 = $page6->new_ttk__label( -text => "Question: 11001 - 00111 = ", -font => "HeaderFont")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
+my $example6 = $page6->new_ttk__label( -text => "What do binary numbers 11001 - 00111 = ")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
 
 
 #Radio Buttons
@@ -335,7 +339,7 @@ sub basicanswer3 {
           my $zero6a = $page6->new_ttk__label(-image=> "zero6img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one6a = $page6->new_ttk__label(-image=> "one6img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      } else {
-          $answerSubtract = "Incorrect, please try again...";  
+          $answerSubtract = "Incorrect, please try again..."; 
           my $zero6b = $page6->new_ttk__label(-image=> "zero6bimg")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one6b = $page6->new_ttk__label(-image=> "one6bimg")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      }
@@ -355,40 +359,37 @@ Now it's time to discuss multiplication. We'll
 need some help from our good friends, Ten and
 Eleven to explain. Multiplying takes more effort
 than adding and subtracting because we need to
-grow even faster than adding.
+grow even faster than adding. To start, you need 
+to multiply each digit individually. 
 EOF
 my $text7a = $page7->new_ttk__label(-text=> $text7aEOF);
 $text7a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
 
 my $text7bEOF = <<EOF;
-To start, you need to multiply each digit
-individually. When multiplying, zero trumps one,
-so anything multiplied by zero will always be
-zero. Only when you multiply 1 by 1 will it equal 1.
-Multiply 10 by 11, you first multiply zero by each
-digit in 11. This equals 00. But you can't forget
-about zero's pal 1. Now you get to multiply him
-by each digit in 11. But this digit starts underneath,
-never to the right, it needs a zero cushion.
-That leaves us with 110.
+When multiplying, zero trumps one, so anything multiplied 
+by zero will always be zero. Only when you multiply 1 by 1 
+will it equal 1. Multiply 10 by 11, you first multiply zero 
+by each digit in 11. This equals 00. But you can't forget
+about zero's pal 1. Now you get to multiply him by each digit 
+in 11. But this digit starts underneath, never to the right, 
+it needs a zero cushion. That leaves us with 110.  Now we have 
+to add the two results to get our answer. Of course, adding 
+zero to anything won't change our answer, so we get 110.
 EOF
 my $text7b = $page7->new_ttk__label(-text => $text7bEOF);
 $text7b->g_grid( -column=> 1, -row => 3, -padx => 20, -pady=> 20, -sticky => "nwes");
 
-my $text7cEOF = <<EOF;
-Now we have to add the two results to get our answer. Of course,
-adding zero to anything won't change our answer, so we get 110.
-EOF
-my $text7c = $page7->new_ttk__label(-text => $text7cEOF);
-$text7c->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
+Tkx::image_create_photo("multiplyimg", -file => "Multiply.gif");
+my $multiexample = $page7->new_ttk__label(-image => "multiplyimg")->g_grid(-column=> 2, -row => 2, -padx => 20, -pady=> 20, -sticky => "nw");
+
+
 
 #####Tab8 Multiplication Ex#####
 #Title
 my $tryMultiply = $page8->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
 #Example
-my $example8 = $page8->new_ttk__label( -text => "Question: 1001 x 0111 =", -font => "HeaderFont"
-)->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
+my $example8 = $page8->new_ttk__label( -text => "What do binary numbers 1001 x 0111 =")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
 
 #Radio Buttons
 my $answerMultiply;
@@ -415,7 +416,7 @@ sub basicanswer4 {
           my $zero8a = $page8->new_ttk__label(-image=> "zero4img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one8a = $page8->new_ttk__label(-image=> "one4img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      } else {
-          $answerMultiply = "Incorrect, please try again...";  
+          $answerMultiply = "Incorrect, please try again..."; 
           my $zero8b = $page8->new_ttk__label(-image=> "zero4bimg")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one8b = $page8->new_ttk__label(-image=> "one4bimg")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      }
@@ -430,9 +431,9 @@ my $zeroone2 = $page9->new_ttk__label(-image => "zeroone2img")->g_grid(-column =
 
 #Text
 my $text9aEOF = <<EOF;
-Now it's time to teach you about division. Dividing in binary is like you would do in decimal.
-To show you how, let's start by dividing 110 by 11010. In order to get the answer, check to see if 110 divides
-equally into the first digit.  If it does, write 1 above the digit. If not, write 0 above it and add the next digit to it and compare.
+Now it's time to teach you about division. Dividing in binary is like you would do in decimal. To show you how, let's start by dividing 
+110 by 11010. In order to get the answer, check to see if 110 divides equally into the first digit.  If it does, write 1 above the digit. 
+If not, write 0 above it and add the next digit to it and compare.
 EOF
 my $text9a = $page9->new_ttk__label(-text=> $text9aEOF);
 $text9a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
@@ -448,12 +449,15 @@ EOF
 my $text9b = $page9->new_ttk__label(-text => $text9bEOF);
 $text9b->g_grid( -column=> 0, -row => 4, -padx => 20, -pady=> 20, -columnspan => 2, -sticky => "nw");
 
+Tkx::image_create_photo("divideimg", -file => "Divide.gif");
+my $divideexample = $page9->new_ttk__label(-image => "divideimg")->g_grid(-column=> 2, -row => 3, -padx => 20, -pady=> 20, -sticky => "nw");
+
 #####Tab10 Division Ex#####
 #Title
 my $try10 = $page10->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
 #Example
-my $example10 = $page10->new_ttk__label( -text => "Question: 110 / 111010 = ", -font => "HeaderFont")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
+my $example10 = $page10->new_ttk__label( -text => "What do binary numbers 110 / 111010 = ")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
 
 #Radio Button
 my $answerDivide;
@@ -480,7 +484,7 @@ sub basicanswer5 {
           my $zero10a = $page10->new_ttk__label(-image=> "zero6img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one10a = $page10->new_ttk__label(-image=> "one6img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      } else {
-          $answerDivide = "Incorrect, please try again...";  
+          $answerDivide = "Incorrect, please try again..."; 
           my $zero10b = $page10->new_ttk__label(-image=> "zero6bimg")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one10b = $page10->new_ttk__label(-image=> "one6bimg")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      }
@@ -498,11 +502,12 @@ my $zero11 = $page11->new_ttk__label(-image => "zero10img")->g_grid(-column => 0
 my $text11aEOF = <<EOF;
 We've taught you how to do basic arithmetic with binary numbers, addition, subtraction, multiplication
 and division.  But what happens if you need a really large binary numbers, like binary number 10000000?
-The trick is to start with the decimal number and convert to binary.  If you remember this trick, it
-will help you significantly.  When a binary number starts with 1 and only has 0's after it, the decimal
-equivalent is 2 * the number of 0's following it. 2 is equal to 2 * 1.  The binary equivalent is 10,
-which contains one 0.  Therefore 2^x will always be in binary 1 followed by x amount of zeros.  2^8
-in binary equals 100000000, or 256 in decimal
+You could count each number individually, but that would take too much time.  Thankfully, there's 
+a shortcut.  The trick is to start with the decimal number and convert to binary.  If you remember
+this trick, it will help you significantly.  When a binary number starts with 1 and only has 0's after it, 
+the decimal equivalent is 2 * the number of 0's following it. 2 is equal to 2 * 1.  The binary equivalent 
+is 10, which contains one 0.  Therefore 2^x will always be in binary 1 followed by x amount of 
+zeros.  2^8 in binary equals 100000000, or 256 in decimal.
 EOF
 my $text11a = $page11->new_ttk__label(-text=> $text11aEOF);
 $text11a->g_grid( -column => 0, -row => 2, -padx => 20, -pady => 20, -sticky => "n");
@@ -529,7 +534,7 @@ $text11b->g_grid( -column=> 0, -row => 3, -padx => 20, -pady=> 20, -columnspan =
 my $try12 = $page12->new_ttk__label( -text => "Try it yourself", -font=> "TitleFont")->g_grid(-column => 0, -row => 0, -columnspan => 3, -pady => 10);
 
 #Example
-my $example12 = $page12->new_ttk__label( -text => "Question: What is 1025 in binary", -font => "HeaderFont")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
+my $example12 = $page12->new_ttk__label( -text => "Question: What is 1025 in binary?")->g_grid(-column => 0, -row => 1, -columnspan => 2, -sticky => "w", -padx => 25);
 
 #Radio Button
 my $answerBig;
@@ -554,7 +559,7 @@ sub basicanswer6 {
           my $zero12a = $page12->new_ttk__label(-image=> "zero1img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one12a = $page12->new_ttk__label(-image=> "one1img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      } else {
-          $answerBig = "Incorrect, please try again...";  
+          $answerBig = "Incorrect, please try again..."; 
           my $zero12b = $page12->new_ttk__label(-image=> "zero2img")->g_grid(-column => 2, -row => 2, -rowspan => 5, -sticky=> "w");
           my $one12b = $page12->new_ttk__label(-image=> "one2img")->g_grid(-column => 3, -row => 2, -rowspan => 5, -sticky => "e");
      }
@@ -564,17 +569,20 @@ sub basicanswer6 {
 sub openCanvas {
          my $canvasWindow = $wid->new_toplevel;
          $canvasWindow->g_wm_title("Sketch Pad");
+		 $canvasWindow->g_wm_geometry("+20+0");
          my $canvasFrame = $canvasWindow->new_ttk__frame( -padding => 5);
          $canvasFrame->g_grid(-column => 0, -row => 0, -sticky => 'nwes');
-         $canvasScreen = $canvasFrame->new_tk__canvas(-width => 600, -height => 300, -bg => "white", -bd => 10, -relief => "groove");
+         $canvasScreen = $canvasFrame->new_tk__canvas(-width => 600, -height => 500, -bg => "white", -bd => 10, -relief => "groove");
          $canvasScreen->g_grid(-column=> 0, -row=> 0, -columnspan => 2, -padx=> 20);
+         my $instruction = $canvasFrame->new_ttk__label(-text => "Click on the black square to begin drawing.\nClick the clear button to erase.")->g_grid(-column => 0, -row => 1, -pady => 20);
          $canvasScreen->g_bind("<1>", [sub {my ($x,$y) = @_; $lastx=$canvasScreen->canvasx($x); $lasty=$canvasScreen->canvasy($y)}, Tkx::Ev("%x","%y")]);
          $canvasScreen->g_bind("<B1-Motion>", [sub {my ($x,$y) = @_; addLine($canvasScreen->canvasx($x),$canvasScreen->canvasy($y))}, Tkx::Ev("%x","%y")]);
          $canvasScreen->g_bind("<B1-ButtonRelease>", sub {doneStroke();});
-         $id = $canvasScreen->create_rectangle(20, 35, 40, 55, -fill => "white", -tags => "palette palettewhite");
-         $canvasScreen->bind($id, "<1>", sub {setColor("white")});
          $id = $canvasScreen->create_rectangle(20, 60, 40, 80, -fill => "black", -tags => "palette paletteblack paletteSelected");
          $canvasScreen->bind($id, "<1>", sub {setColor("black")});
+		 my $clearButton = $canvasFrame->new_ttk__button(-width => 10, -text => "Clear", -command => sub {clearCanvas()});
+		 $clearButton->g_grid(-column => 1, -row => 1);
+		 
 }
 
 sub setColor {
@@ -594,6 +602,9 @@ sub addLine {
 
 sub doneStroke {
     $canvasScreen->itemconfigure("currentline", -width =>5);
+}
+sub clearCanvas {
+	$canvasScreen->delete(-tags =>"currentline");
 }
 
 #Run program
